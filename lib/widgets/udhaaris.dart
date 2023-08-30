@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:udhaari_tracker/models/udhaari.dart';
-import 'package:udhaari_tracker/udhaaris_list.dart';
+import 'package:udhaari_tracker/widgets/new_udhaari.dart';
+import 'package:udhaari_tracker/widgets/udhaaris_list/udhaaris_list.dart';
 
 class Udhaaris extends StatefulWidget {
   const Udhaaris({super.key});
@@ -30,11 +31,23 @@ class _UdhaarisState extends State<Udhaaris> {
         category: Category.leisure),
   ];
 
+  void _openAddUdhaariOverlay() {
+    showModalBottomSheet(
+        context: context, builder: (ctx) => const NewUdhaari());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Udhaari Tracker"),
+        actions: [
+          IconButton(
+              onPressed: _openAddUdhaariOverlay, icon: const Icon(Icons.add))
+        ],
+      ),
       body: Column(children: [
-        Text("data"),
+        const Text("data"),
         Expanded(
           child: UdhaariList(
             udhaaris: _registeredUdhaaris,

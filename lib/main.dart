@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:udhaari_tracker/udhaaris.dart';
+import 'package:udhaari_tracker/widgets/udhaaris.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    home: Udhaaris(),
+  runApp(MaterialApp(
+    theme: ThemeData(useMaterial3: true),
+    home: const Udhaaris(),
   ));
 }
