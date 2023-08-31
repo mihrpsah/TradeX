@@ -25,7 +25,7 @@ class _UdhaarisState extends State<Udhaaris> {
         date: DateTime.now(),
         category: Category.work),
     Udhaari(
-        title: "Porn",
+        title: "Something",
         amount: 34.42,
         date: DateTime.now(),
         category: Category.leisure),

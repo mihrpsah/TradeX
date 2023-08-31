@@ -10,10 +10,13 @@ class NewUdhaari extends StatefulWidget {
 }
 
 class _NewUdhaariState extends State<NewUdhaari> {
-  var _enteredTitle = '';
-
-  void _saveTitleInput(String inputValue) {
-    _enteredTitle = inputValue;
+  final _titleController = TextEditingController();
+  final _amountController = TextEditingController();
+  @override
+  void dispose() {
+    _amountController.dispose();
+    _titleController.dispose();
+    super.dispose();
   }
 
   @override
@@ -23,15 +26,29 @@ class _NewUdhaariState extends State<NewUdhaari> {
       child: Column(
         children: [
           TextField(
-            onChanged: _saveTitleInput,
+            controller: _titleController,
             maxLength: 50,
             decoration: const InputDecoration(label: Text("Title")),
           ),
           Row(
             children: [
+              Expanded(
+                child: TextField(
+                  controller: _amountController,
+                  maxLength: 20,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(label: Text("Amount")),
+                ),
+              )
+            ],
+          ),
+          Row(
+            children: [
+              TextButton(onPressed: () {}, child: const Text("Delete")),
               ElevatedButton(
                   onPressed: () {
-                    print(_enteredTitle);
+                    print(_titleController.text);
+                    print(_amountController.text);
                   },
                   child: const Text("Save Expense"))
             ],
