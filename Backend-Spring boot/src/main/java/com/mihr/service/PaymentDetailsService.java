@@ -1,0 +1,18 @@
+package com.mihr.service;
+
+import com.mihr.model.PaymentDetails;
+import com.mihr.model.User;
+import jakarta.persistence.OneToOne;
+
+public interface PaymentDetailsService {
+    public PaymentDetails addPaymentDetails( String accountNumber,
+                                             String accountHolderName,
+                                             String ifsc,
+                                             String bankName,
+                                             User user
+    );
+
+    public PaymentDetails getUsersPaymentDetails(User user);
+
+
+}
